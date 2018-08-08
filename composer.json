@@ -1,0 +1,28 @@
+{
+    "name": "chgst/chgst",
+    "description": "Lightweight CQRS/ES implementation",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "chgst/common":"@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "spec/"
+        }
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^5.0"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:chgst/common.git"
+        }
+    ]
+}
