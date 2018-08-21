@@ -18,7 +18,8 @@
     },
     "require-dev": {
         "phpspec/phpspec": "^4.0",
-        "leanphp/phpspec-code-coverage": "^4.2"
+        "leanphp/phpspec-code-coverage": "^4.2",
+        "php-coveralls/php-coveralls": "^2.1"
     },
     "repositories": [
         {
