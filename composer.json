@@ -17,12 +17,19 @@
         }
     },
     "require-dev": {
-        "phpspec/phpspec": "^5.0"
+        "phpspec/phpspec": "^4.0",
+        "leanphp/phpspec-code-coverage": "^4.2"
     },
     "repositories": [
         {
             "type": "vcs",
             "url":  "git@github.com:chgst/common.git"
         }
-    ]
+    ],
+    "config": {
+        "bin-dir": "bin",
+        "platform": {
+            "php": "7.2"
+        }
+    }
 }
