@@ -5,12 +5,18 @@ namespace spec\Changeset\Communication;
 use Changeset\Command\CommandInterface;
 use Changeset\Command\HandlerInterface;
 use Changeset\Communication\CommandBusInterface;
+use Changeset\Communication\EventBusInterface;
 use Changeset\Communication\InMemoryCommandBus;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class InMemoryCommandBusSpec extends ObjectBehavior
 {
+    function let(EventBusInterface $eventBus)
+    {
+        $this->setEventBus($eventBus);
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType(CommandBusInterface::class);
