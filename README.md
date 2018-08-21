@@ -6,6 +6,8 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/chgst/chgst/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/chgst/chgst/?branch=develop)
 [![License](https://poser.pugx.org/chgst/chgst/license.svg)](https://packagist.org/packages/chgst/chgst)
 
+A very lightweight CQRS/ES library for PHP.
+
 ## Installation
 
 ```bash
