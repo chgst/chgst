@@ -23,7 +23,7 @@ class InMemoryCommandBusSpec extends ObjectBehavior
         $this->shouldHaveType(InMemoryCommandBus::class);
     }
 
-    function it_can_dispatch_commands(CommandInterface $command, HandlerInterface $handler)
+    function it_can_dispatch_commands_to_command_handlers(CommandInterface $command, HandlerInterface $handler)
     {
         $this->addHandler($handler);
 
