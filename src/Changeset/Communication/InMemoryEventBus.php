@@ -27,7 +27,7 @@ class InMemoryEventBus implements EventBusInterface
         $this->listenersEnabled = false;
     }
 
-    public function listenersEnabled()
+    public function listenersEnabled() : bool
     {
         return $this->listenersEnabled;
     }
