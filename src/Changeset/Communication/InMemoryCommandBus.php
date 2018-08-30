@@ -10,15 +10,14 @@ class InMemoryCommandBus implements CommandBusInterface
     /** @var EventBusInterface */
     private $eventBus;
 
-    /** @var HandlerInterface[] */
-    private $handlers = [];
+    /** @var HandlerInterface */
+    private $handler;
 
-    public function addHandler(HandlerInterface $handler)
+    public function setHandler(HandlerInterface $handler)
     {
-        if ( ! in_array($handler, $this->handlers))
-        {
-            $this->handlers[] = $handler;
-        }
+        $this->handler = $handler;
+
+        return $this;
     }
 
     public function setEventBus(EventBusInterface $eventBus)
@@ -30,12 +29,6 @@ class InMemoryCommandBus implements CommandBusInterface
 
     public function dispatch(CommandInterface $command)
     {
-        foreach($this->handlers as $handler)
-        {
-            if($handler->supports($command))
-            {
-                return $this->eventBus->dispatch($handler->process($command));
-            }
-        }
+        return $this->eventBus->dispatch($this->handler->process($command));
     }
 }

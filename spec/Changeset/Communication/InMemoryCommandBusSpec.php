@@ -7,6 +7,7 @@ use Changeset\Command\HandlerInterface;
 use Changeset\Communication\CommandBusInterface;
 use Changeset\Communication\EventBusInterface;
 use Changeset\Communication\InMemoryCommandBus;
+use Changeset\Event\EventInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -23,16 +24,11 @@ class InMemoryCommandBusSpec extends ObjectBehavior
         $this->shouldHaveType(InMemoryCommandBus::class);
     }
 
-    function it_can_dispatch_commands_to_command_handlers(CommandInterface $command, HandlerInterface $handler)
+    function it_can_dispatch_commands_to_command_handler(CommandInterface $command, HandlerInterface $handler, EventInterface $event)
     {
-        $this->addHandler($handler);
+        $this->setHandler($handler);
 
-        $handler->supports(Argument::any())->willReturn(false);
-
-        $this->dispatch($command);
-
-        $handler->supports(Argument::any())->willReturn(true);
-        $handler->process(Argument::any())->shouldBeCalled();
+        $handler->process(Argument::any())->willReturn($event)->shouldBeCalled();
 
         $this->dispatch($command);
     }
