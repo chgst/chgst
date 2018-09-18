@@ -1,0 +1,30 @@
+{
+    "name": "chgst/chgst",
+    "description": "Lightweight CQRS/ES implementation",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "chgst/common":"^0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "spec/"
+        }
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^4.0",
+        "leanphp/phpspec-code-coverage": "^4.2",
+        "php-coveralls/php-coveralls": "^2.1"
+    },
+    "config": {
+        "bin-dir": "bin",
+        "platform": {
+            "php": "7.2"
+        }
+    }
+}
