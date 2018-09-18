@@ -4,7 +4,7 @@
     "type": "library",
     "license": "MIT",
     "require": {
-        "chgst/common":"@dev"
+        "chgst/common":"^0.1"
     },
     "autoload": {
         "psr-4": {
@@ -21,12 +21,6 @@
         "leanphp/phpspec-code-coverage": "^4.2",
         "php-coveralls/php-coveralls": "^2.1"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url":  "git@github.com:chgst/common.git"
-        }
-    ],
     "config": {
         "bin-dir": "bin",
         "platform": {
