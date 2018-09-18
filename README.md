@@ -14,3 +14,5 @@ A very lightweight CQRS/ES library for PHP.
 composer require chgst/chgst
 ```
 
+* See [chgst/chgst-example](https://github.com/chgst/chgst-example)
+* See [chgst/chgst-bundle-example](https://github.com/chgst/chgst-bundle-example)
