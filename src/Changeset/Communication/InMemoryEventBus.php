@@ -8,10 +8,10 @@ use Changeset\Event\ProjectorInterface;
 
 class InMemoryEventBus implements EventBusInterface
 {
-    /** @var ProjectorInterface[] */
+    /** @var array */
     private $projectors = [];
 
-    /** @var ListenerInterface[] */
+    /** @var array */
     private $listeners = [];
 
     /** @var bool */
@@ -32,39 +32,59 @@ class InMemoryEventBus implements EventBusInterface
         return $this->listenersEnabled;
     }
 
-    public function addListener(ListenerInterface $listener)
+    public function addListener(ListenerInterface $listener, $priority = 0)
     {
-        if ( ! in_array($listener, $this->listeners))
+        if ( ! isset($this->listeners[$priority]) || ! is_array($this->listeners[$priority]))
         {
-           $this->listeners[] = $listener;
+            $this->listeners[$priority] = [];
+        }
+
+        if ( ! in_array($listener, $this->listeners[$priority]))
+        {
+           $this->listeners[$priority][] = $listener;
         }
     }
 
-    public function addProjector(ProjectorInterface $projector)
+    public function addProjector(ProjectorInterface $projector, $priority = 0)
     {
-        if ( ! in_array($projector, $this->projectors))
+        if ( ! isset($this->projectors[$priority]) || ! is_array($this->projectors[$priority]))
         {
-            $this->projectors[] = $projector;
+            $this->projectors[$priority] = [];
+        }
+
+        if ( ! in_array($projector, $this->projectors[$priority]))
+        {
+            $this->projectors[$priority][] = $projector;
         }
     }
 
     public function dispatch(EventInterface $event)
     {
-        foreach ($this->projectors as $projector)
+        krsort($this->projectors);
+
+        foreach ($this->projectors as $priority => $projectors)
         {
-            if($projector->supports($event))
+            foreach ($projectors as $projector)
             {
-                $projector->process($event);
+                if ($projector->supports($event))
+                {
+                    $projector->process($event);
+                }
             }
         }
 
         if($this->listenersEnabled)
         {
-            foreach ($this->listeners as $listener)
+            krsort($this->listeners);
+
+            foreach ($this->listeners as $priority => $listeners)
             {
-                if($listener->supports($event))
+                foreach ($listeners as $listener)
                 {
-                    $listener->process($event);
+                    if($listener->supports($event))
+                    {
+                        $listener->process($event);
+                    }
                 }
             }
         }
