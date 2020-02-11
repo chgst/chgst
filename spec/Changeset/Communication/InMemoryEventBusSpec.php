@@ -32,13 +32,26 @@ class InMemoryEventBusSpec extends ObjectBehavior
         $this->listenersEnabled()->shouldReturn(false);
     }
 
-    function it_can_dispatch_event_to_projectors_and_listeners(EventInterface $event, ProjectorInterface $projector, ListenerInterface $listener)
+    function it_can_dispatch_event_to_projectors_and_listeners(
+        EventInterface $event,
+        ProjectorInterface $projector,
+        ProjectorInterface $projector2,
+        ProjectorInterface $projector3,
+        ListenerInterface $listener
+    )
     {
+        $this->addProjector($projector2, -32);
         $this->addProjector($projector);
+        $this->addProjector($projector3, 45);
         $this->addListener($listener);
 
         $projector->supports(Argument::any())->willReturn(true);
+        $projector2->supports(Argument::any())->willReturn(true);
+        $projector3->supports(Argument::any())->willReturn(true);
+
         $projector->process($event)->shouldBeCalled();
+        $projector2->process($event)->shouldBeCalled();
+        $projector3->process($event)->shouldBeCalled();
 
         $this->dispatch($event);
 
