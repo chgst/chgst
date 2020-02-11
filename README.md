@@ -1,5 +1,7 @@
 # Changeset
 
+<!-- 0.2.0 -->
+
 [![Version](https://img.shields.io/packagist/v/chgst/chgst.svg?style=flat-square)](https://packagist.org/packages/chgst/chgst)
 [![Build Status](https://travis-ci.org/chgst/chgst.svg?branch=develop)](https://travis-ci.org/chgst/chgst)
 [![Coverage Status](https://coveralls.io/repos/github/chgst/chgst/badge.svg?branch=develop)](https://coveralls.io/github/chgst/chgst?branch=develop)
