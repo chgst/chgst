@@ -8,6 +8,8 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface as ContractsEventDispatcherInterface;
+
 class Handler implements HandlerInterface
 {
     /** @var RepositoryInterface */
@@ -49,7 +51,14 @@ class Handler implements HandlerInterface
 
         $event->setName(sprintf('%s_completed', $command->getName()));
 
-        $this->dispatcher->dispatch(new GenericEvent($event), 'changeset.command.handled');
+        if($this->dispatcher instanceof ContractsEventDispatcherInterface)
+        {
+            $this->dispatcher->dispatch(new GenericEvent($event), 'changeset.command.handled');
+        }
+        else
+        {
+            $this->dispatcher->dispatch('changeset.command.handled', new GenericEvent($event));
+        }
 
         $this->repository->append($event);
 

@@ -1,6 +1,6 @@
 # Changeset
 
-<!-- 0.2.2 -->
+<!-- 0.2.3 -->
 
 [![Version](https://img.shields.io/packagist/v/chgst/chgst.svg?style=flat-square)](https://packagist.org/packages/chgst/chgst)
 [![Build Status](https://travis-ci.org/chgst/chgst.svg?branch=develop)](https://travis-ci.org/chgst/chgst)
