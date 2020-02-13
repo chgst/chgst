@@ -5,6 +5,7 @@ namespace Changeset\Command;
 use Changeset\Event\EventInterface;
 use Changeset\Event\RepositoryInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
 class Handler implements HandlerInterface
@@ -23,7 +24,7 @@ class Handler implements HandlerInterface
      */
     public function __construct(EventDispatcherInterface $dispatcher, RepositoryInterface $repository = null)
     {
-        $this->dispatcher = $dispatcher;
+        $this->dispatcher = LegacyEventDispatcherProxy::decorate($dispatcher);
 
         if ($repository) $this->setRepository($repository);
     }
@@ -45,7 +46,7 @@ class Handler implements HandlerInterface
 
         $event->setName(sprintf('%s_completed', $command->getName()));
 
-        $this->dispatcher->dispatch('changeset.command.handled', new GenericEvent($event));
+        $this->dispatcher->dispatch(new GenericEvent($event), 'changeset.command.handled');
 
         $this->repository->append($event);
 
