@@ -24,7 +24,10 @@ class Handler implements HandlerInterface
      */
     public function __construct(EventDispatcherInterface $dispatcher, RepositoryInterface $repository = null)
     {
-        $this->dispatcher = LegacyEventDispatcherProxy::decorate($dispatcher);
+        $this->dispatcher = class_exists(LegacyEventDispatcherProxy::class)
+            ? LegacyEventDispatcherProxy::decorate($dispatcher)
+            : $dispatcher
+        ;
 
         if ($repository) $this->setRepository($repository);
     }
