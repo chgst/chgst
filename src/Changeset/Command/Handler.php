@@ -46,7 +46,7 @@ class Handler implements HandlerInterface
 
         $event->setName(sprintf('%s_completed', $command->getName()));
 
-        $this->dispatcher->dispatch('changeset.command.handled', new GenericEvent($event));
+        $this->dispatcher->dispatch(new GenericEvent($event), 'changeset.command.handled');
 
         $this->repository->append($event);
 
