@@ -20,7 +20,7 @@ jobs:
           command: php composer.phar update --prefer-dist --ignore-platform-reqs
           env:
             COMPOSER_MEMORY_LIMIT: -1
-      - run: bin/phpspec run -fpretty --verbose
+      - run: vendor/bin/phpspec run -fpretty --verbose
       - store_artifacts:
           path: build/logs/clover.xml
 
