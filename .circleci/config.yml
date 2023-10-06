@@ -23,3 +23,11 @@ jobs:
       - run: bin/phpspec run -fpretty --verbose
       - store_artifacts:
           path: build/logs/clover.xml
+
+
+# Orchestrate jobs using workflows
+# See: https://circleci.com/docs/configuration-reference/#workflows
+workflows:
+  default-workflow:
+    jobs:
+      - default
