@@ -1,14 +1,13 @@
 <?php
 
-namespace spec\Changeset\Communication;
+namespace spec\Chgst\Communication;
 
-use Changeset\Communication\InMemoryEventBus;
-use Changeset\Event\EventInterface;
-use Changeset\Event\ListenerInterface;
-use Changeset\Event\ProjectorInterface;
+use Chgst\Communication\InMemoryEventBus;
+use Chgst\Event\EventInterface;
+use Chgst\Event\ListenerInterface;
+use Chgst\Event\ProjectorInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class InMemoryEventBusSpec extends ObjectBehavior
 {

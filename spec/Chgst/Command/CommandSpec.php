@@ -1,11 +1,10 @@
 <?php
 
-namespace spec\Changeset\Command;
+namespace spec\Chgst\Command;
 
-use Changeset\Command\Command;
-use Changeset\Command\CommandInterface;
+use Chgst\Command\Command;
+use Chgst\Command\CommandInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class CommandSpec extends ObjectBehavior
 {

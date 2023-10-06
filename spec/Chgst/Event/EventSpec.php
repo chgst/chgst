@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\Changeset\Event;
+namespace spec\Chgst\Event;
 
-use Changeset\Event\Event;
-use Changeset\Event\EventInterface;
+use Chgst\Event\Event;
+use Chgst\Event\EventInterface;
 use PhpSpec\ObjectBehavior;
 
 class EventSpec extends ObjectBehavior
