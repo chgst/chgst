@@ -20,7 +20,11 @@ jobs:
           command: php composer.phar update --prefer-dist --ignore-platform-reqs
           env:
             COMPOSER_MEMORY_LIMIT: -1
-      - run: vendor/bin/phpspec run -fpretty --verbose
+      - run:
+          name: "run test"
+          command: vendor/bin/phpspec run -fpretty --verbose
+          env:
+            XDEBUG_MODE: coverage
       - store_artifacts:
           path: build/logs/clover.xml
 
