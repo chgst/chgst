@@ -14,6 +14,7 @@ jobs:
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
       - checkout
+      - run: php -i
       - run: curl -s https://getcomposer.org/installer | php
       - run:
           name: "install deps"
