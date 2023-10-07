@@ -4,7 +4,7 @@
     "type": "library",
     "license": "MIT",
     "require": {
-        "chgst/common":"@dev"
+        "chgst/common": "dev-develop"
     },
     "autoload": {
         "psr-4": {
@@ -25,11 +25,5 @@
         "platform": {
             "php": "8.2"
         }
-    },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../common/"
-        }
-    ]
+    }
 }
