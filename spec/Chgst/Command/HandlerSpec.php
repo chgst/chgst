@@ -1,12 +1,12 @@
 <?php
 
-namespace spec\Changeset\Command;
+namespace spec\Chgst\Command;
 
-use Changeset\Command\CommandInterface;
-use Changeset\Command\Handler;
-use Changeset\Command\HandlerInterface;
-use Changeset\Event\EventInterface;
-use Changeset\Event\RepositoryInterface;
+use Chgst\Command\CommandInterface;
+use Chgst\Command\Handler;
+use Chgst\Command\HandlerInterface;
+use Chgst\Event\EventInterface;
+use Chgst\Event\RepositoryInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;

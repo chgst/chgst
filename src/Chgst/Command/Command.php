@@ -1,9 +1,9 @@
 <?php
 
-namespace Changeset\Command;
+namespace Chgst\Command;
 
-use Changeset\Common\HasPayloadTrait;
-use Changeset\Common\OnAggregateTrait;
+use Chgst\Common\HasPayloadTrait;
+use Chgst\Common\OnAggregateTrait;
 
 class Command implements CommandInterface
 {

@@ -1,28 +1,25 @@
 <?php
 
-namespace Changeset\Communication;
+namespace Chgst\Communication;
 
-use Changeset\Event\EventInterface;
-use Changeset\Event\ListenerInterface;
-use Changeset\Event\ProjectorInterface;
+use Chgst\Event\EventInterface;
+use Chgst\Event\ListenerInterface;
+use Chgst\Event\ProjectorInterface;
 
 class InMemoryEventBus implements EventBusInterface
 {
-    /** @var array */
-    private $projectors = [];
+    private array $projectors = [];
 
-    /** @var array */
-    private $listeners = [];
+    private array $listeners = [];
 
-    /** @var bool */
-    private $listenersEnabled = false;
+    private bool $listenersEnabled = false;
 
-    public function enableListeners()
+    public function enableListeners(): void
     {
         $this->listenersEnabled = true;
     }
 
-    public function disableListeners()
+    public function disableListeners(): void
     {
         $this->listenersEnabled = false;
     }
@@ -32,7 +29,7 @@ class InMemoryEventBus implements EventBusInterface
         return $this->listenersEnabled;
     }
 
-    public function addListener(ListenerInterface $listener, $priority = 0)
+    public function addListener(ListenerInterface $listener, $priority = 0): void
     {
         if ( ! isset($this->listeners[$priority]) || ! is_array($this->listeners[$priority]))
         {
@@ -45,7 +42,7 @@ class InMemoryEventBus implements EventBusInterface
         }
     }
 
-    public function addProjector(ProjectorInterface $projector, $priority = 0)
+    public function addProjector(ProjectorInterface $projector, $priority = 0): void
     {
         if ( ! isset($this->projectors[$priority]) || ! is_array($this->projectors[$priority]))
         {
@@ -58,7 +55,7 @@ class InMemoryEventBus implements EventBusInterface
         }
     }
 
-    public function dispatch(EventInterface $event)
+    public function dispatch(EventInterface $event): void
     {
         krsort($this->projectors);
 

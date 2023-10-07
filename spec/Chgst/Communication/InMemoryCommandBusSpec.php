@@ -1,13 +1,13 @@
 <?php
 
-namespace spec\Changeset\Communication;
+namespace spec\Chgst\Communication;
 
-use Changeset\Command\CommandInterface;
-use Changeset\Command\HandlerInterface;
-use Changeset\Communication\CommandBusInterface;
-use Changeset\Communication\EventBusInterface;
-use Changeset\Communication\InMemoryCommandBus;
-use Changeset\Event\EventInterface;
+use Chgst\Command\CommandInterface;
+use Chgst\Command\HandlerInterface;
+use Chgst\Communication\CommandBusInterface;
+use Chgst\Communication\EventBusInterface;
+use Chgst\Communication\InMemoryCommandBus;
+use Chgst\Event\EventInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
