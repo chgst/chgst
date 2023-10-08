@@ -4,7 +4,7 @@
     "type": "library",
     "license": "MIT",
     "require": {
-        "chgst/common": "dev-develop"
+        "chgst/common": "^0.3.1"
     },
     "autoload": {
         "psr-4": {
