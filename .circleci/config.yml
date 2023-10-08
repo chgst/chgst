@@ -32,7 +32,7 @@ jobs:
           name: "debug"
           command: cat build/logs/junit.xml
       - store_artifacts:
-          path: build/logs/clover.xml
+          path: build/logs/*.xml
       - store_test_results:
           path: build/logs/junit.xml
       - coveralls/upload
